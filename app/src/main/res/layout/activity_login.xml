@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/logo_w"
+        android:layout_height="@dimen/logo_h"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/layout_margin"
+        android:layout_marginTop="@dimen/logo_top_margin"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_margin="@dimen/layout_margin"
+        android:gravity="center_horizontal"
+        android:hint="@string/hint_username"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:layout_margin="@dimen/layout_margin"
+        android:gravity="center_horizontal"
+        android:hint="@string/hint_password" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_password"
+        android:layout_margin="@dimen/margin50"
+        android:singleLine="true"
+        android:text="@string/text_login" />
+</RelativeLayout>

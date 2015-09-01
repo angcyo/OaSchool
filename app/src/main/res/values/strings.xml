@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="hint_password">您的账户密码</string>
+    <string name="hint_username">您的有效账户名</string>
+    <string name="text_login">登录OA系统</string>
 </resources>
