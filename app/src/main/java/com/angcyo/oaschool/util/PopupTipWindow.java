@@ -102,4 +102,16 @@ public class PopupTipWindow {
         rootLayout.postDelayed(hideRunnable, Constant.POPTIP_TIME);
         rootLayout.setText(" " + tip);
     }
+
+    public static void removeTip() {
+        try {
+            rootLayout.removeCallbacks(hideRunnable);
+            wManager.removeView(rootLayout);
+            rootLayout = null;
+            wManager = null;
+            wmParams = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

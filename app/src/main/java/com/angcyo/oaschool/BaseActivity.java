@@ -1,5 +1,6 @@
 package com.angcyo.oaschool;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -45,6 +46,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Init after.
      */
     protected abstract void initAfter();
+
+    protected void launchActivity(Class c) {
+        Intent intent = new Intent(this, c);
+        startActivity(intent);
+    }
 
     protected void handMessage(Message msg, int what, Object obj) {
 

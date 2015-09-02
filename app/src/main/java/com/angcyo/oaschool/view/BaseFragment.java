@@ -16,18 +16,23 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadData();
+        loadData(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return null;
+        View view = loadView(inflater, container, savedInstanceState);
+        initView(view);
+        initAfter();
+        return view;
     }
 
-    protected abstract void loadData();
+    protected abstract void loadData(Bundle savedInstanceState);
 
-    protected abstract void initView();
+    protected abstract View loadView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
+    protected abstract void initView(View rootView);
 
     protected void initAfter() {
     }

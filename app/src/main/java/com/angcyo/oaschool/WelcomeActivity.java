@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.angcyo.oaschool.components.RUserMgr;
 import com.angcyo.oaschool.event.UserEvent;
 import com.angcyo.oaschool.util.PopupTipWindow;
+import com.angcyo.oaschool.util.Util;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,19 +39,35 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initAfter() {
-
+        //测试专用
+        userName.setText("a02");
+        userPassword.setText("a123456");
     }
 
     @OnClick(R.id.login)
     public void login(View view) {
-        RUserMgr.userLogin();
+        String userName = this.userName.getText().toString();
+        String userPw = this.userPassword.getText().toString();
+        if (Util.isEmpty(userName)) {
+            this.userName.setError(getString(R.string.user_not_empty));
+            this.userName.requestFocus();
+            return;
+        }
+        if (Util.isEmpty(userPw)) {
+            this.userPassword.setError(getString(R.string.password_not_empty));
+            this.userPassword.requestFocus();
+            return;
+        }
+
+        RUserMgr.userLogin(userName, userPw);
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void onUserEvent(UserEvent event) {
         if (event.code == UserEvent.CODE_OK) {
-            login.setText("登录成功");
-            PopupTipWindow.showTip(this, PopupTipWindow.ICO_TYPE_SUCCEED, "登录成功");
+//            PopupTipWindow.showTip(this, PopupTipWindow.ICO_TYPE_SUCCEED, "登录成功");
+            launchActivity(MainActivity.class);
+            finish();
         } else {
             PopupTipWindow.showTip(this, PopupTipWindow.ICO_TYPE_FAILED, "登录失败");
         }
@@ -60,5 +77,6 @@ public class WelcomeActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        PopupTipWindow.removeTip();
     }
 }
