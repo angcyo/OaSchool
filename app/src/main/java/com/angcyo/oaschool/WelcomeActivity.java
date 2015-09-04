@@ -59,11 +59,13 @@ public class WelcomeActivity extends BaseActivity {
             return;
         }
 
+        showDialogTip("登录中...");
         RUserMgr.userLogin(userName, userPw);
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void onUserEvent(UserEvent event) {
+        hideDialogTip();
         if (event.code == UserEvent.CODE_OK) {
 //            PopupTipWindow.showTip(this, PopupTipWindow.ICO_TYPE_SUCCEED, "登录成功");
             launchActivity(MainActivity.class);
@@ -78,5 +80,6 @@ public class WelcomeActivity extends BaseActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         PopupTipWindow.removeTip();
+        ButterKnife.unbind(this);
     }
 }

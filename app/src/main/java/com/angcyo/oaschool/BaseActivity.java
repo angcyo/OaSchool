@@ -6,9 +6,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
+import com.angcyo.oaschool.view.fragment.ProgressFragment;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     public static Handler handler;
+    private ProgressFragment progressFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void launchActivity(Class c) {
         Intent intent = new Intent(this, c);
         startActivity(intent);
+    }
+
+    protected void showDialogTip(String tip) {
+        progressFragment = ProgressFragment.newInstance(tip);
+        progressFragment.show(getSupportFragmentManager(), "dialog_tip");
+    }
+
+    protected void hideDialogTip() {
+        if (progressFragment != null) {
+            progressFragment.dismiss();
+            progressFragment = null;
+        }
     }
 
     protected void handMessage(Message msg, int what, Object obj) {
