@@ -1,11 +1,10 @@
 package com.angcyo.oaschool.event;
 
+import com.angcyo.oaschool.mode.bean.UserResult;
+
 /**
  * Created by angcyo on 15-09-01-001.
  */
-public class UserEvent {
-    public static int CODE_OK = 1;//登录成功
-    public static int CODE_ER = 0;//登录失败
-
-    public int code; //用户登录状态
+public class UserEvent extends BaseEvent{
+    public UserResult result;
 }

@@ -7,4 +7,5 @@
     <dimen name="logo_h">100dp</dimen>
     <dimen name="layout_margin">10dp</dimen>
     <dimen name="margin50">50dp</dimen>
+    <dimen name="title_text_size">19sp</dimen>
 </resources>

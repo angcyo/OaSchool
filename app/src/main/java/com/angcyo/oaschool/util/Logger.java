@@ -6,17 +6,19 @@ package com.angcyo.oaschool.util;
 
 import android.util.Log;
 
+import com.angcyo.oaschool.BuildConfig;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Logger {
     public static final String TAG = "Y2AndroidApi";
-    private static boolean isDebugOn = true;
-    private static boolean isInfoOn = true;
-    private static boolean isWarnOn = true;
-    private static boolean isVerboseOn = true;
-    private static boolean isRelease = false;
-    private static boolean isError = true;
+    private static boolean isDebugOn = BuildConfig.DEBUG;
+    private static boolean isInfoOn = BuildConfig.DEBUG;
+    private static boolean isWarnOn = BuildConfig.DEBUG;
+    private static boolean isVerboseOn = BuildConfig.DEBUG;
+    private static boolean isRelease = BuildConfig.DEBUG;
+    private static boolean isError = BuildConfig.DEBUG;
 
     public static void d(String tag, String message) {
         if (isRelease) {
