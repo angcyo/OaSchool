@@ -2,11 +2,26 @@
     <string name="app_name">学校办公OA系统</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_quit">退出</string>
     <string name="hint_password">您的账户密码</string>
     <string name="hint_username">您的有效账户名</string>
     <string name="text_login">登录OA系统</string>
     <string name="user_not_empty">用户名不能为空</string>
     <string name="password_not_empty">密码不能为空</string>
     <string name="text_notify">通知</string>
+    <string name="no_net_tip">请检查网络!</string>
+    <string name="logining">登录中...</string>
+    <string name="need_relogin">请重新登录</string>
+    <string name="happened_error">发生错误</string>
+    <string name="pull_up_load_tip">上拉加载更多</string>
+    <string name="want_load_more">松手即可加载更多</string>
+    <string name="loading">加载中...</string>
+    <string name="check_net_tip">请检测网络</string>
+    <string name="no_more_tip">没有更多了</string>
+    <string name="no_notify">没有通知</string>
+    <string name="wait_refresh_tip">请等待上一次刷新完成.</string>
+    <string name="cancel">取消</string>
+    <string name="open_file">打开文件</string>
+    <string name="save_file">保存文件</string>
+    <string name="file_name">文件名称:</string>
 </resources>

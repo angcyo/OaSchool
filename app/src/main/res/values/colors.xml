@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dim_bg">#50000000</color>
+
+    <color name="tran_normal">#30000000</color>
+    <color name="tran_full">#00000000</color>
+    <color name="tran_press">#60000000</color>
+    <color name="action_bar_bg">#169BDB</color>
+    <color name="action_bar_bg_dark">#99169BDB</color>
+    <color name="actionbar_text">#ffffff</color>
 </resources>

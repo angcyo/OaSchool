@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/logo"
@@ -29,7 +31,9 @@
         android:layout_below="@+id/user_name"
         android:layout_margin="@dimen/layout_margin"
         android:gravity="center_horizontal"
-        android:hint="@string/hint_password" />
+        android:hint="@string/hint_password"
+        android:password="true"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/login"
@@ -37,6 +41,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_password"
         android:layout_margin="@dimen/margin50"
+        android:background="@drawable/button_bg_selector"
         android:singleLine="true"
-        android:text="@string/text_login" />
+        android:text="@string/text_login"
+        android:textColor="@color/actionbar_text" />
+
+    <TextView
+        android:id="@+id/ver_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="3dp"
+        android:textColor="@color/action_bar_bg"
+        tools:text="版本号:1.2r" />
 </RelativeLayout>

@@ -1,12 +1,22 @@
 package com.angcyo.oaschool;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.ColorRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
+import com.angcyo.oaschool.components.RConstant;
+import com.angcyo.oaschool.util.OkioUtil;
 import com.angcyo.oaschool.view.fragment.ProgressFragment;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -26,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     //初始化
     private void init() {
         handler = new StaticHandler(this);
+        RConstant.SER_IP = OkioUtil.readIp();
     }
 
 
@@ -55,15 +66,38 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void showDialogTip(String tip) {
+    public void showDialogTip(String tip) {
         progressFragment = ProgressFragment.newInstance(tip);
         progressFragment.show(getSupportFragmentManager(), "dialog_tip");
     }
 
-    protected void hideDialogTip() {
+    public void hideDialogTip() {
         if (progressFragment != null) {
             progressFragment.dismiss();
             progressFragment = null;
+        }
+    }
+
+    @TargetApi(19)
+    protected void initWindow(@ColorRes int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//状态栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//导航栏
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setTintResource(color);//设置状态栏颜色
+            tintManager.setStatusBarTintEnabled(true);
+//            tintManager.setNavigationBarTintResource(R.color.dark_green);//设置导航栏颜色
+//            tintManager.setNavigationBarTintEnabled(false);
+        }
+    }
+
+    @TargetApi(19)
+    protected void setStateBarColor(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//状态栏
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintColor(color);//设置状态栏颜色
+            tintManager.setStatusBarTintEnabled(true);
         }
     }
 
@@ -82,6 +116,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         handler.sendMessage(msg);
     }
 
+    public void sendRunnable(Runnable runnable) {
+        handler.post(runnable);
+    }
+
+    public void sendDelayRunnable(Runnable runnable, long delayMillis) {
+        handler.postDelayed(runnable, delayMillis);
+    }
+
+    protected OaApplication getApp() {
+        return ((OaApplication) getApplication());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        ButterKnife.unbind(this);
+    }
 
     static class StaticHandler extends Handler {
         BaseActivity context;

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tran_normal"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/actionbar_text"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/file_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:text="@string/file_name"
+                android:textColor="?attr/colorAccent" />
+
+            <EditText
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="65dp"
+                android:paddingRight="70dp"
+                android:singleLine="true"
+                tools:text="124124124124st124ring/save_file" />
+
+            <TextView
+                android:id="@+id/file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                tools:text="123.12mb" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/file_layout"
+            android:layout_margin="2dp"
+            android:background="@drawable/button_bg_selector"
+            android:text="@string/save_file"
+            android:textColor="@color/actionbar_text" />
+
+        <Button
+            android:id="@+id/open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/save"
+            android:layout_margin="2dp"
+            android:background="@drawable/button_bg_selector"
+            android:text="@string/open_file"
+            android:textColor="@color/actionbar_text" />
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/open"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_dark_bg_selector"
+            android:text="@string/cancel"
+            android:textColor="@color/actionbar_text" />
+    </RelativeLayout>
+
+</FrameLayout>

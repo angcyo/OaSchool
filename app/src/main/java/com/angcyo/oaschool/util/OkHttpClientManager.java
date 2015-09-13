@@ -138,6 +138,10 @@ public class OkHttpClientManager {
         return getInstance().getGetDelegate().getAsString(url);
     }
 
+    public static byte[] getAsBytes(String url) throws IOException {
+        return getInstance().getGetDelegate().getAsByte(url);
+    }
+
     public static void getAsyn(String url, ResultCallback callback) {
         getInstance().getGetDelegate().getAsyn(url, callback);
     }
@@ -706,6 +710,11 @@ public class OkHttpClientManager {
         public String getAsString(String url) throws IOException {
             Response execute = get(url);
             return execute.body().string();
+        }
+
+        public byte[] getAsByte(String url) throws IOException {
+            Response execute = get(url);
+            return execute.body().bytes();
         }
 
 

@@ -3,6 +3,7 @@ package com.angcyo.oaschool.view.fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,9 @@ public class ProgressFragment extends BaseDialogFragment {
         linearLayout.setBackgroundResource(R.drawable.round_bg);
 
         ProgressBar progressBar = new ProgressBar(getActivity());
-        linearLayout.addView(progressBar);
+        int barSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30f, getResources().getDisplayMetrics());
+
+        linearLayout.addView(progressBar, new LinearLayout.LayoutParams(barSize, barSize));
 
         if (!Util.isEmpty(tip)) {
             TextView textView = new TextView(getActivity());
