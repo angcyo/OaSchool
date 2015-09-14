@@ -8,19 +8,28 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.Random;
 
 /**
  * Created by angcyo on 15-09-08-008.
  */
 public class Util {
+    static String config = getSDPath() + File.separator + "config.ini";
+
     /**
      * 去除字符串左右的字符
      */
@@ -54,9 +63,7 @@ public class Util {
      * 判断字符串是否为空
      */
     public static boolean isEmpty(String str) {
-        if (str == null || str.trim().length() == 0)
-            return true;
-        return false;
+        return str == null || str.trim().length() == 0;
     }
 
     /**
@@ -73,11 +80,10 @@ public class Util {
         if (netInfo == null) {
             return false;
         }
-        if (netInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return netInfo.isConnected();
     }
+
+// 可以使用Time类，更简单
 
     /**
      * 获取网络的名字
@@ -112,8 +118,6 @@ public class Util {
             return "无网络";
         }
     }
-
-// 可以使用Time类，更简单
 
     /**
      * @return 按照HH:mm:ss 返回时间
@@ -166,6 +170,8 @@ public class Util {
         return format.format(new Date());
     }
 
+//
+
     /**
      * 需要权限<uses-permission android:name="android.permission.READ_PHONE_STATE" >
      *
@@ -177,8 +183,6 @@ public class Util {
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getLine1Number();
     }
-
-//
 
     /**
      * 取得device的IP address
@@ -277,17 +281,18 @@ public class Util {
      * @return
      */
     public static String getAppVersionName(Context context) {
+        String version = "unknown";
 // 获取package manager的实例
         PackageManager packageManager = context.getPackageManager();
 // getPackageName()是你当前类的包名，0代表是获取版本信息
-        PackageInfo packInfo = null;
+        PackageInfo packInfo;
         try {
             packInfo = packageManager.getPackageInfo(context.getPackageName(),
                     0);
+            version = packInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        String version = packInfo.versionName;
 // Log.i("版本名称:", version);
         return version;
     }
@@ -302,14 +307,15 @@ public class Util {
 // 获取package manager的实例
         PackageManager packageManager = context.getPackageManager();
 // getPackageName()是你当前类的包名，0代表是获取版本信息
-        PackageInfo packInfo = null;
+        int code = 1;
+        PackageInfo packInfo;
         try {
             packInfo = packageManager.getPackageInfo(context.getPackageName(),
                     0);
+            code = packInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        int code = packInfo.versionCode;
 // Log.i("版本代码:", version);
         return code;
     }
@@ -326,10 +332,7 @@ public class Util {
 
         NetworkInfo info = cm.getActiveNetworkInfo();
 
-        if (info != null && info.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
+        return info != null && info.isConnectedOrConnecting();
     }
 
     /**
@@ -449,4 +452,84 @@ public class Util {
         result.append(thisMethodStack.getMethodName());
         return result.toString();
     }
+
+    /**
+     * 返回SD卡路径,如果没有返回默认的下载缓存路径
+     *
+     * @return the sD path
+     */
+    public static String getSDPath() {
+        return isExternalStorageWritable() ? Environment
+                .getExternalStorageDirectory().getPath() : Environment
+                .getDownloadCacheDirectory().getPath();
+    }
+
+    /**
+     * 判断是否有SD卡
+     *
+     * @return the boolean
+     */
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    /**
+     * 从配置文件中,获取值
+     *
+     * @param key    the key
+     * @param config the config
+     * @return the string
+     */
+    public static String get(String key, String config) {
+        FileInputStream s;
+        String value = "";
+        try {
+            s = new FileInputStream(config);
+            Properties properties = new Properties();
+            properties.load(s);
+            value = properties.getProperty(key, "");
+            s.close();
+        } catch (Exception e) {
+        }
+        return value;
+    }
+
+    /**
+     * 保存到配置文件 格式: key!value
+     *
+     * @param content the content
+     * @param config  the config
+     */
+    public static void set(String content, String config) {
+        Properties prop = new Properties();
+        String[] values;
+        InputStream fis = null;
+        OutputStream fos = null;
+        try {
+            fis = new FileInputStream(config);
+            fos = new FileOutputStream(config);
+            prop.load(fis);
+            values = content.split("!");
+            String value = values.length == 1 ? "" : values[1].trim();
+            prop.setProperty(values[0].trim(), value);
+            prop.storeToXML(fos, " by angcyo", "utf-8");
+        } catch (Exception e) {
+        } finally {
+            try {
+                fis.close();
+                fos.close();
+            } catch (Exception e2) {
+            }
+        }
+    }
+
+    public static String get(String key) {
+        return get(key, config);
+    }
+
+    public static void set(String content) {
+        set(content, config);
+    }
+
 }

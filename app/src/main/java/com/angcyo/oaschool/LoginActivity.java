@@ -4,10 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
->>>>>>> origin/master
 
 import com.angcyo.oaschool.components.RConstant;
 import com.angcyo.oaschool.control.UserTask;
@@ -38,11 +35,8 @@ public class LoginActivity extends BaseActivity {
     EditText userPassword;
     @Bind(R.id.login)
     Button login;
-<<<<<<< HEAD
     @Bind(R.id.ver_code)
     TextView verCode;
-=======
->>>>>>> origin/master
     UserInfo userInfo;
 
     @Override
@@ -53,10 +47,7 @@ public class LoginActivity extends BaseActivity {
 //        startService(new Intent("oaservice"));
         userInfo = new UserInfo();
         initWindow(R.color.action_bar_bg);
-<<<<<<< HEAD
         verCode.setText("版本号:" + Util.getAppVersionName(this));
-=======
->>>>>>> origin/master
     }
 
     @Override
@@ -108,15 +99,4 @@ public class LoginActivity extends BaseActivity {
             PopupTipWindow.showTip(this, PopupTipWindow.ICO_TYPE_FAILED, "登录失败");
         }
     }
-<<<<<<< HEAD
-=======
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-//        PopupTipWindow.();
-        ButterKnife.unbind(this);
-    }
->>>>>>> origin/master
 }
