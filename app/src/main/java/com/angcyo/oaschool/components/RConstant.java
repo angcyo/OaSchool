@@ -9,8 +9,8 @@ import java.io.File;
  */
 public class RConstant {
 
-    public static String SER_IP = "oa.nslhzx.com";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP;
-    //    public static String SER_IP = "120.197.25.113:8123";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP;
+    //    public static String SER_IP = "oa.nslhzx.com";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP;
+    public static String SER_IP = "120.197.25.113:8123";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP; 120.197.25.113:8123
     public static String SER_IP_FILE_PATH = "/mnt/sdcard/oaip.ini"; //默认IP文件路径: /mnt/sdcard/oaip.ini
 
     public static int POPTIP_TIME = 2000;//提示窗口消失的时间

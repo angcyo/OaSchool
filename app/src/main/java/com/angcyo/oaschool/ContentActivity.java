@@ -15,6 +15,7 @@ import com.angcyo.oaschool.components.RConstant;
 import com.angcyo.oaschool.util.Util;
 import com.angcyo.oaschool.view.BaseFragment;
 import com.angcyo.oaschool.view.fragment.SaveFileFragment;
+import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -87,7 +88,7 @@ public class ContentActivity extends BaseActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                view.getSettings().setDefaultTextEncodingName("utf8");
+                view.getSettings().setDefaultTextEncodingName("utf8");
                 view.loadUrl(url);
                 return true;
             }
@@ -108,7 +109,7 @@ public class ContentActivity extends BaseActivity {
         webView.setDownloadListener(new DownloadListener() {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-//                Logger.e(url + "  " + mimetype + "\n" + contentDisposition);
+                Logger.e(url + "  " + mimetype + "\n" + contentDisposition);
                 String fileName = "未知文件名";
                 if (!Util.isEmpty(contentDisposition) && contentDisposition.contains("filename")) {
                     fileName = contentDisposition.substring(contentDisposition.indexOf("=") + 1);

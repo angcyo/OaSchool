@@ -97,11 +97,16 @@ public class TitleListRecycleAdapter extends RecyclerView.Adapter<TitleListRecyc
             holder.title.setText(bean.getTitle());
             holder.time.setText(bean.getDatetime());
             if (bean.getIsnew().equalsIgnoreCase("1")) {
-                holder.author.setTextColor(context.getResources().getColor(android.R.color.holo_red_dark));
+//                holder.author.setTextColor(context.getResources().getColor(android.R.color.holo_red_dark));
                 holder.title.setTextColor(context.getResources().getColor(android.R.color.holo_red_dark));
             } else {
-                holder.author.setTextColor(context.getResources().getColor(android.R.color.black));
-                holder.title.setTextColor(context.getResources().getColor(android.R.color.black));
+                if (bean.getOntop().equalsIgnoreCase("1")) {
+//                    holder.author.setTextColor(context.getResources().getColor(R.color.action_bar_bg));
+                    holder.title.setTextColor(context.getResources().getColor(R.color.action_bar_bg));
+                } else {
+//                    holder.author.setTextColor(context.getResources().getColor(android.R.color.black));
+                    holder.title.setTextColor(context.getResources().getColor(android.R.color.black));
+                }
             }
 
             holder.itemLayout.setOnClickListener(new View.OnClickListener() {

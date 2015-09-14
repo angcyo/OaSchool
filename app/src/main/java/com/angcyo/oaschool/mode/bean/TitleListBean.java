@@ -1,9 +1,11 @@
 package com.angcyo.oaschool.mode.bean;
 
+import java.util.Comparator;
+
 /**
  * Created by angcyo on 15-09-12-012.
  */
-public class TitleListBean {
+public class TitleListBean implements Comparator<TitleListBean> {
 
     /**
      * id : 267
@@ -18,44 +20,65 @@ public class TitleListBean {
     private String title;
     private String datetime;
     private String isnew;
+    private String ontop;
 
-    public void setId(String id) {
-        this.id = id;
+    public String getOntop() {
+        return ontop;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
-
-    public void setIsnew(String isnew) {
-        this.isnew = isnew;
+    public void setOntop(String ontop) {
+        this.ontop = ontop;
     }
 
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getAuthor() {
         return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDatetime() {
         return datetime;
     }
 
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
     public String getIsnew() {
         return isnew;
+    }
+
+    public void setIsnew(String isnew) {
+        this.isnew = isnew;
+    }
+
+
+    @Override
+    public int compare(TitleListBean lhs, TitleListBean rhs) {
+        if (lhs.getOntop().equalsIgnoreCase("1")) {
+            return -1;
+        }
+        if (rhs.getOntop().equalsIgnoreCase("1")) {
+            return 1;
+        }
+        return 0;
     }
 }
