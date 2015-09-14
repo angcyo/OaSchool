@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
+import com.angcyo.oaschool.components.RConstant;
 import com.angcyo.oaschool.util.Util;
 import com.angcyo.oaschool.view.BaseFragment;
 import com.angcyo.oaschool.view.fragment.SaveFileFragment;
@@ -126,7 +127,7 @@ public class ContentActivity extends BaseActivity {
     }
 
     private String getContentUrl() {
-        String url = String.format("http://120.197.25.113:8123/APP/TongZhiview.asp?APPID=%s&id=%d", OaApplication.getUserInfo().appid, id);
+        String url = String.format("http://%s/APP/TongZhiview.asp?APPID=%s&id=%d", RConstant.SER_IP, OaApplication.getUserInfo().appid, id);
         return url;
     }
 
