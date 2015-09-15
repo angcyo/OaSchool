@@ -2,6 +2,7 @@ package com.angcyo.oaschool.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,6 +61,7 @@ public class MainFragment extends BaseFragment implements MainRecycleAdapter.OnI
         adapter.setOnItemListener(this);
         recycle.setLayoutManager(new GridLayoutManager(this.getActivity(), RConstant.COL_NUM));
         recycle.setAdapter(adapter);
+        recycle.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override

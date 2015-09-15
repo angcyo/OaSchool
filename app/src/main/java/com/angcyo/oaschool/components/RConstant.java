@@ -11,9 +11,12 @@ public class RConstant {
 
     //    public static String SER_IP = "oa.nslhzx.com";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP;
     public static String SER_IP = "120.197.25.113:8123";//保存服务器地址,先从文件读取, 如果文件没有, 默认采用此IP; 120.197.25.113:8123
+    public static String DATA_VERSION = "1";//数据库版本，只有这个号和schoolname.asp 返回 里面的 dataversion 相同才能运行
+    public static String VERSION = "1.2.4r";//首页显示的版本号
+
     public static String SER_IP_FILE_PATH = "/mnt/sdcard/oaip.ini"; //默认IP文件路径: /mnt/sdcard/oaip.ini
 
-    public static int POPTIP_TIME = 2000;//提示窗口消失的时间
+    public static int POPTIP_TIME = 3000;//提示窗口消失的时间
     public static int POPTIP_OFFSET_Y = 200;//提示窗口消失的时间
 
     public static boolean useHeart = false; //是否启动心跳,每隔一定时间执行任务

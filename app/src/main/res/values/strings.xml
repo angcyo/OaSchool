@@ -24,4 +24,5 @@
     <string name="open_file">打开文件</string>
     <string name="save_file">保存文件</string>
     <string name="file_name">文件名称:</string>
+    <string name="long_click_tip">长按可以显示密码</string>
 </resources>

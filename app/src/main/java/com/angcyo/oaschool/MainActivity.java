@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.angcyo.oaschool.mode.UserInfo;
 import com.angcyo.oaschool.view.BaseFragment;
 import com.angcyo.oaschool.view.fragment.MainFragment;
 
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.quit) {
+            OaApplication.setUserInfo(new UserInfo());
             gotoLogin(this);
             return true;
         }

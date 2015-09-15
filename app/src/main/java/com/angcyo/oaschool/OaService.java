@@ -48,12 +48,9 @@ public class OaService extends Service {
     public void onCreate() {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_URGENT_AUDIO);
         super.onCreate();
-        OkioUtil.writeToFile("服务创建" + Util.callMethodAndLine());
-
         OAS = this;
         workThread = new RWorkThread();
         workThread.start();//启动工作线程
-
         handler = new Handler(Looper.myLooper());
         if (RConstant.useHeart) {
             handler.postDelayed(doTimeRunnable, RConstant.HEART_TIME);
@@ -68,8 +65,12 @@ public class OaService extends Service {
 
     @Override
     public void onDestroy() {
-        OkioUtil.writeToFile("服务销毁" + Util.callMethodAndLine());
         workThread.interrupt();
+        workThread.addTask(new TaskRunnable() {//添加一个空任务,取消线程等待,中断线程
+            @Override
+            public void run() {
+            }
+        });
         super.onDestroy();
     }
 }
