@@ -38,4 +38,9 @@
         <item name="android:textColor">@color/actionbar_text</item>
         <!-- The textColor property is backward compatible with the Support Library -->
     </style>
+
+    <style name="ContentTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

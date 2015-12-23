@@ -3,6 +3,8 @@ package com.angcyo.oaschool;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.text.format.Formatter;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
@@ -16,6 +18,8 @@ import com.angcyo.oaschool.util.Util;
 import com.angcyo.oaschool.view.BaseFragment;
 import com.angcyo.oaschool.view.fragment.SaveFileFragment;
 import com.orhanobut.logger.Logger;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -40,6 +44,9 @@ public class ContentActivity extends BaseActivity {
         webView = (WebView) findViewById(R.id.webview);
         initWebView(webView);
         initWindow(R.color.action_bar_bg);
+
+        SlidrConfig config = new SlidrConfig.Builder().edge(true).build();
+        Slidr.attach(this, config);
     }
 
     @Override
@@ -140,5 +147,21 @@ public class ContentActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container, fragment);
         fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName()).commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_content, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.quit) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

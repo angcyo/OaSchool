@@ -116,14 +116,22 @@ public class MainFragment extends BaseFragment implements MainRecycleAdapter.OnI
     @Override
     public void onItemClick(int position) {// 点击菜单项的时候,调用
 //        PopupTipWindow.showTip(getActivity(), "点击" + position);
-        if (position != 0) {
-            PopupTipWindow.showTip(getActivity(), "功能开发中,请期待!");
-            return;
-        }
-
         BaseFragment fragment = new TitleListFragment();
         Bundle args = new Bundle();
-        args.putInt(TitleListFragment.KEY_POS, position);
+        switch (position) {
+            case 0:
+                args.putInt(TitleListFragment.KEY_POS, position);
+                break;
+            case 1:
+                args.putInt(TitleListFragment.KEY_POS, position);
+                break;
+            case 2:
+                args.putInt(TitleListFragment.KEY_POS, position);
+                break;
+            default:
+                PopupTipWindow.showTip(getActivity(), "功能开发中,请期待!");
+                return;
+        }
         fragment.setArguments(args);
         ((MainActivity) getActivity()).add(fragment);
     }

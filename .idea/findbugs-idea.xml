@@ -3,11 +3,11 @@
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="annotationTypeSettings">
       <map>
-        <entry key="ExpPriority" value="-4473925;-12828863;-8355712;WAVE_UNDERSCORE;0;" />
-        <entry key="HighPriority" value="-39836;-12828863;-39836;WAVE_UNDERSCORE;1;" />
-        <entry key="IgnorePriority" value="-4473925;-12828863;-11978414;WAVE_UNDERSCORE;0;" />
-        <entry key="LowPriority" value="-4473925;-12828863;-10316203;BOXED;0;" />
-        <entry key="NormalPriority" value="-4473925;-12828863;-10461184;WAVE_UNDERSCORE;2;" />
+        <entry key="ExpPriority" value="-5259836;-13483446;-8355712;WAVE_UNDERSCORE;0;" />
+        <entry key="HighPriority" value="-39836;-13483446;-39836;WAVE_UNDERSCORE;1;" />
+        <entry key="IgnorePriority" value="-5259836;-13483446;-11978414;WAVE_UNDERSCORE;0;" />
+        <entry key="LowPriority" value="-5259836;-13483446;-10316203;BOXED;0;" />
+        <entry key="NormalPriority" value="-5259836;-13483446;-10461184;WAVE_UNDERSCORE;2;" />
       </map>
     </option>
     <option name="_basePreferences">
@@ -215,11 +215,11 @@
     </option>
     <option name="_annotationTypeSettings">
       <map>
-        <entry key="ExpPriority" value="-4473925;-12828863;-8355712;WAVE_UNDERSCORE;0;" />
-        <entry key="HighPriority" value="-39836;-12828863;-39836;WAVE_UNDERSCORE;1;" />
-        <entry key="IgnorePriority" value="-4473925;-12828863;-11978414;WAVE_UNDERSCORE;0;" />
-        <entry key="LowPriority" value="-4473925;-12828863;-10316203;BOXED;0;" />
-        <entry key="NormalPriority" value="-4473925;-12828863;-10461184;WAVE_UNDERSCORE;2;" />
+        <entry key="ExpPriority" value="-5259836;-13483446;-8355712;WAVE_UNDERSCORE;0;" />
+        <entry key="HighPriority" value="-39836;-13483446;-39836;WAVE_UNDERSCORE;1;" />
+        <entry key="IgnorePriority" value="-5259836;-13483446;-11978414;WAVE_UNDERSCORE;0;" />
+        <entry key="LowPriority" value="-5259836;-13483446;-10316203;BOXED;0;" />
+        <entry key="NormalPriority" value="-5259836;-13483446;-10461184;WAVE_UNDERSCORE;2;" />
       </map>
     </option>
   </component>
